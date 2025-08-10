@@ -15,7 +15,7 @@
       },
       "body": {
         "view": {
-          "value": "<p>Steps for employees to request access to the company portal and shared resources. Requires supervisor approval.</p>",
+          "value": "<h2>Employee Access Request Process</h2><p>Employees require access to the company portal and file server to perform daily work tasks. Follow these steps:</p><ol><li>Login to the <a href='#'>Access Request Portal</a> using your employee credentials.</li><li>Select 'Application Portal Access' and fill in required details.</li><li>Submit the form for supervisor approval.</li><li>Once approved, the IT team will send you a confirmation email with login instructions.</li></ol><p><strong>Note:</strong> File Server access requests require an additional approval from IT Security.</p>",
           "representation": "view"
         }
       },
@@ -41,7 +41,7 @@
       },
       "body": {
         "view": {
-          "value": "<p>Access request process for team leads, including dashboard permissions and extended file server access.</p>",
+          "value": "<h2>Team Lead Access Process</h2><p>Team Leads may require additional permissions to manage their teams effectively. Follow these steps:</p><ol><li>Access the <a href='#'>Team Lead Access Form</a> and login with your company account.</li><li>Request 'Reporting Dashboard Access' to view team performance metrics.</li><li>If needed, also select 'Extended File Server Access' to manage team folders.</li><li>Submit the request for Department Head approval.</li><li>Once approvals are complete, IT will provision your access within 2 business days.</li></ol><p><strong>Tip:</strong> Attach any relevant project documentation to speed up the approval process.</p>",
           "representation": "view"
         }
       },
@@ -67,7 +67,7 @@
       },
       "body": {
         "view": {
-          "value": "<p>Workflow for managers requesting admin console access or external API integration rights.</p>",
+          "value": "<h2>Manager Access Request Steps</h2><p>Managers may request elevated system permissions for administrative tasks. Here is the process:</p><ol><li>Go to the <a href='#'>Manager Access Portal</a> and login with your credentials.</li><li>Select 'Admin Console Access' if you need to manage user accounts and settings.</li><li>For automation and integrations, request 'External API Access' and provide a business justification.</li><li>Submit your request for IT Director approval, and in the case of API access, CTO approval as well.</li><li>IT will confirm access via email and provide any required onboarding resources.</li></ol><p><strong>Security Reminder:</strong> Never share admin credentials with others.</p>",
           "representation": "view"
         }
       },
@@ -93,7 +93,7 @@
       },
       "body": {
         "view": {
-          "value": "<p>Privileges and request process for system administrators, including security configurations.</p>",
+          "value": "<h2>System Administrator Access Process</h2><p>System Administrators have the highest level of access and must follow strict request protocols for sensitive changes.</p><ol><li>Log in to the <a href='#'>IT Admin Portal</a>.</li><li>Submit a 'Full Admin Console Access' request if setting up or modifying system configurations.</li><li>For network and security changes, request 'Security Configuration Access' and attach detailed implementation plans.</li><li>All security-related changes must be approved by the CTO before execution.</li><li>Once authorized, document the change in the IT Change Management System.</li></ol><p><strong>Compliance Note:</strong> All administrator actions are logged and periodically audited.</p>",
           "representation": "view"
         }
       },

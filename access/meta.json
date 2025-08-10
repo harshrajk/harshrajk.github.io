@@ -1,0 +1,116 @@
+{
+  "results": [
+    {
+      "id": "100101",
+      "type": "page",
+      "status": "current",
+      "title": "Employee Access Guidelines",
+      "space": {
+        "id": 2001,
+        "key": "HR",
+        "name": "Human Resources",
+        "_links": {
+          "self": "/rest/api/space/HR"
+        }
+      },
+      "body": {
+        "view": {
+          "value": "<p>Steps for employees to request access to the company portal and shared resources. Requires supervisor approval.</p>",
+          "representation": "view"
+        }
+      },
+      "_links": {
+        "self": "/rest/api/content/100101",
+        "webui": "/spaces/HR/pages/100101/Employee+Access+Guidelines",
+        "base": "https://yourcompany.atlassian.net/wiki",
+        "context": "/wiki"
+      }
+    },
+    {
+      "id": "100102",
+      "type": "page",
+      "status": "current",
+      "title": "Team Lead Access Procedures",
+      "space": {
+        "id": 2002,
+        "key": "OPS",
+        "name": "Operations",
+        "_links": {
+          "self": "/rest/api/space/OPS"
+        }
+      },
+      "body": {
+        "view": {
+          "value": "<p>Access request process for team leads, including dashboard permissions and extended file server access.</p>",
+          "representation": "view"
+        }
+      },
+      "_links": {
+        "self": "/rest/api/content/100102",
+        "webui": "/spaces/OPS/pages/100102/Team+Lead+Access+Procedures",
+        "base": "https://yourcompany.atlassian.net/wiki",
+        "context": "/wiki"
+      }
+    },
+    {
+      "id": "100103",
+      "type": "page",
+      "status": "current",
+      "title": "Manager Access Approval Workflow",
+      "space": {
+        "id": 2003,
+        "key": "MGT",
+        "name": "Management",
+        "_links": {
+          "self": "/rest/api/space/MGT"
+        }
+      },
+      "body": {
+        "view": {
+          "value": "<p>Workflow for managers requesting admin console access or external API integration rights.</p>",
+          "representation": "view"
+        }
+      },
+      "_links": {
+        "self": "/rest/api/content/100103",
+        "webui": "/spaces/MGT/pages/100103/Manager+Access+Approval+Workflow",
+        "base": "https://yourcompany.atlassian.net/wiki",
+        "context": "/wiki"
+      }
+    },
+    {
+      "id": "100104",
+      "type": "page",
+      "status": "current",
+      "title": "System Administrator Privileges",
+      "space": {
+        "id": 2004,
+        "key": "IT",
+        "name": "IT Operations",
+        "_links": {
+          "self": "/rest/api/space/IT"
+        }
+      },
+      "body": {
+        "view": {
+          "value": "<p>Privileges and request process for system administrators, including security configurations.</p>",
+          "representation": "view"
+        }
+      },
+      "_links": {
+        "self": "/rest/api/content/100104",
+        "webui": "/spaces/IT/pages/100104/System+Administrator+Privileges",
+        "base": "https://yourcompany.atlassian.net/wiki",
+        "context": "/wiki"
+      }
+    }
+  ],
+  "start": 0,
+  "limit": 25,
+  "size": 4,
+  "_links": {
+    "base": "https://yourcompany.atlassian.net/wiki",
+    "context": "/wiki",
+    "self": "/rest/api/content/search?cql=type=page%20AND%20title~%22access%22"
+  }
+}

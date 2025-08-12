@@ -1,116 +1,339 @@
 {
-  "results": [
-    {
-      "id": "100101",
-      "type": "page",
-      "status": "current",
-      "title": "Employee Access Guidelines",
-      "space": {
-        "id": 2001,
-        "key": "HR",
-        "name": "Human Resources",
-        "_links": {
-          "self": "/rest/api/space/HR"
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-08-12",
+    "description": "Team-based tool access management configuration"
+  },
+  "accessLevels": {
+    "superAdmin": {
+      "name": "Super Admin",
+      "description": "Full administrative access with all permissions",
+      "permissions": ["create", "read", "update", "delete", "manage_users", "manage_billing", "system_config"]
+    },
+    "admin": {
+      "name": "Admin",
+      "description": "Administrative access with limited system configuration",
+      "permissions": ["create", "read", "update", "delete", "manage_users"]
+    },
+    "support": {
+      "name": "Support",
+      "description": "Read and basic operational access for support activities",
+      "permissions": ["read", "basic_operations", "view_logs"]
+    },
+    "custom": {
+      "name": "Custom",
+      "description": "Tailored permissions based on specific role requirements",
+      "permissions": ["variable"]
+    }
+  },
+  "teams": {
+    "platform": {
+      "name": "Platform Team",
+      "description": "Infrastructure and development platform management",
+      "tools": ["github", "aws"],
+      "teamLead": "platform.lead@company.com",
+      "members": [
+        {
+          "email": "john.doe@company.com",
+          "role": "Senior Platform Engineer"
+        },
+        {
+          "email": "jane.smith@company.com",
+          "role": "DevOps Engineer"
         }
-      },
-      "body": {
-        "view": {
-          "value": "<h2>Employee Access Request Process</h2><p>Employees require access to the company portal and file server to perform daily work tasks. Follow these steps:</p><ol><li>Login to the <a href='#'>Access Request Portal</a> using your employee credentials.</li><li>Select 'Application Portal Access' and fill in required details.</li><li>Submit the form for supervisor approval.</li><li>Once approved, the IT team will send you a confirmation email with login instructions.</li></ol><p><strong>Note:</strong> File Server access requests require an additional approval from IT Security.</p>",
-          "representation": "view"
+      ]
+    },
+    "cloudflare": {
+      "name": "Cloudflare Team",
+      "description": "CDN, security, and edge computing management",
+      "tools": ["cloudflare"],
+      "teamLead": "cloudflare.lead@company.com",
+      "members": [
+        {
+          "email": "mike.johnson@company.com",
+          "role": "Network Security Engineer"
+        },
+        {
+          "email": "sarah.wilson@company.com",
+          "role": "Edge Computing Specialist"
         }
+      ]
+    },
+    "observations": {
+      "name": "Observations Team",
+      "description": "Monitoring, alerting, and observability management",
+      "tools": ["newrelic", "wormly", "xmatters"],
+      "teamLead": "observations.lead@company.com",
+      "members": [
+        {
+          "email": "alex.brown@company.com",
+          "role": "SRE Engineer"
+        },
+        {
+          "email": "lisa.davis@company.com",
+          "role": "Monitoring Specialist"
+        }
+      ]
+    }
+  },
+  "tools": {
+    "github": {
+      "name": "GitHub",
+      "description": "Source code management and collaboration platform",
+      "category": "Development",
+      "url": "https://github.com",
+      "supportedAccessLevels": ["superAdmin", "admin", "support", "custom"],
+      "defaultAccess": "support"
+    },
+    "aws": {
+      "name": "Amazon Web Services",
+      "description": "Cloud infrastructure and services platform",
+      "category": "Cloud Infrastructure",
+      "url": "https://aws.amazon.com",
+      "supportedAccessLevels": ["superAdmin", "admin", "support", "custom"],
+      "defaultAccess": "support"
+    },
+    "cloudflare": {
+      "name": "Cloudflare",
+      "description": "CDN, security, and performance optimization platform",
+      "category": "Network Security",
+      "url": "https://cloudflare.com",
+      "supportedAccessLevels": ["superAdmin", "admin", "support", "custom"],
+      "defaultAccess": "support"
+    },
+    "newrelic": {
+      "name": "New Relic",
+      "description": "Application performance monitoring and observability",
+      "category": "Monitoring",
+      "url": "https://newrelic.com",
+      "supportedAccessLevels": ["superAdmin", "admin", "support", "custom"],
+      "defaultAccess": "support"
+    },
+    "wormly": {
+      "name": "Wormly",
+      "description": "Website and server monitoring service",
+      "category": "Monitoring",
+      "url": "https://wormly.com",
+      "supportedAccessLevels": ["superAdmin", "admin", "support", "custom"],
+      "defaultAccess": "support"
+    },
+    "xmatters": {
+      "name": "xMatters",
+      "description": "Digital service availability and incident management",
+      "category": "Incident Management",
+      "url": "https://xmatters.com",
+      "supportedAccessLevels": ["superAdmin", "admin", "support", "custom"],
+      "defaultAccess": "support"
+    }
+  },
+  "approvers": {
+    "executive": {
+      "cto": {
+        "name": "Chief Technology Officer",
+        "email": "cto@company.com",
+        "approvalScope": ["superAdmin"],
+        "escalationLevel": 1
       },
-      "_links": {
-        "self": "/rest/api/content/100101",
-        "webui": "/spaces/HR/pages/100101/Employee+Access+Guidelines",
-        "base": "https://yourcompany.atlassian.net/wiki",
-        "context": "/wiki"
+      "ciso": {
+        "name": "Chief Information Security Officer",
+        "email": "ciso@company.com",
+        "approvalScope": ["superAdmin", "admin"],
+        "escalationLevel": 1
       }
     },
-    {
-      "id": "100102",
-      "type": "page",
-      "status": "current",
-      "title": "Team Lead Access Procedures",
-      "space": {
-        "id": 2002,
-        "key": "OPS",
-        "name": "Operations",
-        "_links": {
-          "self": "/rest/api/space/OPS"
-        }
+    "management": {
+      "engineeringManager": {
+        "name": "Engineering Manager",
+        "email": "eng.manager@company.com",
+        "approvalScope": ["admin", "support", "custom"],
+        "escalationLevel": 2,
+        "teams": ["platform", "cloudflare", "observations"]
       },
-      "body": {
-        "view": {
-          "value": "<h2>Team Lead Access Process</h2><p>Team Leads may require additional permissions to manage their teams effectively. Follow these steps:</p><ol><li>Access the <a href='#'>Team Lead Access Form</a> and login with your company account.</li><li>Request 'Reporting Dashboard Access' to view team performance metrics.</li><li>If needed, also select 'Extended File Server Access' to manage team folders.</li><li>Submit the request for Department Head approval.</li><li>Once approvals are complete, IT will provision your access within 2 business days.</li></ol><p><strong>Tip:</strong> Attach any relevant project documentation to speed up the approval process.</p>",
-          "representation": "view"
-        }
-      },
-      "_links": {
-        "self": "/rest/api/content/100102",
-        "webui": "/spaces/OPS/pages/100102/Team+Lead+Access+Procedures",
-        "base": "https://yourcompany.atlassian.net/wiki",
-        "context": "/wiki"
+      "securityManager": {
+        "name": "Security Manager",
+        "email": "security.manager@company.com",
+        "approvalScope": ["admin", "support", "custom"],
+        "escalationLevel": 2,
+        "specialization": ["security", "compliance"]
       }
     },
-    {
-      "id": "100103",
-      "type": "page",
-      "status": "current",
-      "title": "Manager Access Approval Workflow",
-      "space": {
-        "id": 2003,
-        "key": "MGT",
-        "name": "Management",
-        "_links": {
-          "self": "/rest/api/space/MGT"
-        }
+    "teamLeads": {
+      "platformLead": {
+        "name": "Platform Team Lead",
+        "email": "platform.lead@company.com",
+        "approvalScope": ["support", "custom"],
+        "escalationLevel": 3,
+        "teams": ["platform"]
       },
-      "body": {
-        "view": {
-          "value": "<h2>Manager Access Request Steps</h2><p>Managers may request elevated system permissions for administrative tasks. Here is the process:</p><ol><li>Go to the <a href='#'>Manager Access Portal</a> and login with your credentials.</li><li>Select 'Admin Console Access' if you need to manage user accounts and settings.</li><li>For automation and integrations, request 'External API Access' and provide a business justification.</li><li>Submit your request for IT Director approval, and in the case of API access, CTO approval as well.</li><li>IT will confirm access via email and provide any required onboarding resources.</li></ol><p><strong>Security Reminder:</strong> Never share admin credentials with others.</p>",
-          "representation": "view"
-        }
+      "cloudflareLead": {
+        "name": "Cloudflare Team Lead",
+        "email": "cloudflare.lead@company.com",
+        "approvalScope": ["support", "custom"],
+        "escalationLevel": 3,
+        "teams": ["cloudflare"]
       },
-      "_links": {
-        "self": "/rest/api/content/100103",
-        "webui": "/spaces/MGT/pages/100103/Manager+Access+Approval+Workflow",
-        "base": "https://yourcompany.atlassian.net/wiki",
-        "context": "/wiki"
-      }
-    },
-    {
-      "id": "100104",
-      "type": "page",
-      "status": "current",
-      "title": "System Administrator Privileges",
-      "space": {
-        "id": 2004,
-        "key": "IT",
-        "name": "IT Operations",
-        "_links": {
-          "self": "/rest/api/space/IT"
-        }
-      },
-      "body": {
-        "view": {
-          "value": "<h2>System Administrator Access Process</h2><p>System Administrators have the highest level of access and must follow strict request protocols for sensitive changes.</p><ol><li>Log in to the <a href='#'>IT Admin Portal</a>.</li><li>Submit a 'Full Admin Console Access' request if setting up or modifying system configurations.</li><li>For network and security changes, request 'Security Configuration Access' and attach detailed implementation plans.</li><li>All security-related changes must be approved by the CTO before execution.</li><li>Once authorized, document the change in the IT Change Management System.</li></ol><p><strong>Compliance Note:</strong> All administrator actions are logged and periodically audited.</p>",
-          "representation": "view"
-        }
-      },
-      "_links": {
-        "self": "/rest/api/content/100104",
-        "webui": "/spaces/IT/pages/100104/System+Administrator+Privileges",
-        "base": "https://yourcompany.atlassian.net/wiki",
-        "context": "/wiki"
+      "observationsLead": {
+        "name": "Observations Team Lead",
+        "email": "observations.lead@company.com",
+        "approvalScope": ["support", "custom"],
+        "escalationLevel": 3,
+        "teams": ["observations"]
       }
     }
-  ],
-  "start": 0,
-  "limit": 25,
-  "size": 4,
-  "_links": {
-    "base": "https://yourcompany.atlassian.net/wiki",
-    "context": "/wiki",
-    "self": "/rest/api/content/search?cql=type=page%20AND%20title~%22access%22"
+  },
+  "accessMatrix": {
+    "platform": {
+      "github": {
+        "superAdmin": {
+          "approver": "cto",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "ciso"
+        },
+        "admin": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": false
+        },
+        "support": {
+          "approver": "platformLead",
+          "requiresSecondaryApproval": false
+        },
+        "custom": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": false,
+          "customPermissionsRequired": true
+        }
+      },
+      "aws": {
+        "superAdmin": {
+          "approver": "cto",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "ciso"
+        },
+        "admin": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "securityManager"
+        },
+        "support": {
+          "approver": "platformLead",
+          "requiresSecondaryApproval": false
+        },
+        "custom": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "securityManager",
+          "customPermissionsRequired": true
+        }
+      }
+    },
+    "cloudflare": {
+      "cloudflare": {
+        "superAdmin": {
+          "approver": "cto",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "ciso"
+        },
+        "admin": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "securityManager"
+        },
+        "support": {
+          "approver": "cloudflareLead",
+          "requiresSecondaryApproval": false
+        },
+        "custom": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": false,
+          "customPermissionsRequired": true
+        }
+      }
+    },
+    "observations": {
+      "newrelic": {
+        "superAdmin": {
+          "approver": "cto",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "ciso"
+        },
+        "admin": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": false
+        },
+        "support": {
+          "approver": "observationsLead",
+          "requiresSecondaryApproval": false
+        },
+        "custom": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": false,
+          "customPermissionsRequired": true
+        }
+      },
+      "wormly": {
+        "superAdmin": {
+          "approver": "cto",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "ciso"
+        },
+        "admin": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": false
+        },
+        "support": {
+          "approver": "observationsLead",
+          "requiresSecondaryApproval": false
+        },
+        "custom": {
+          "approver": "observationsLead",
+          "requiresSecondaryApproval": false,
+          "customPermissionsRequired": true
+        }
+      },
+      "xmatters": {
+        "superAdmin": {
+          "approver": "cto",
+          "requiresSecondaryApproval": true,
+          "secondaryApprover": "ciso"
+        },
+        "admin": {
+          "approver": "engineeringManager",
+          "requiresSecondaryApproval": false
+        },
+        "support": {
+          "approver": "observationsLead",
+          "requiresSecondaryApproval": false
+        },
+        "custom": {
+          "approver": "observationsLead",
+          "requiresSecondaryApproval": false,
+          "customPermissionsRequired": true
+        }
+      }
+    }
+  },
+  "workflow": {
+    "accessRequest": {
+      "steps": [
+        "User submits access request",
+        "System validates team and tool alignment",
+        "Primary approver review",
+        "Secondary approver review (if required)",
+        "Access provisioning",
+        "Notification to requester and team lead"
+      ],
+      "slaHours": 48,
+      "escalationPolicy": {
+        "firstEscalation": 24,
+        "secondEscalation": 48,
+        "finalEscalation": 72
+      }
+    },
+    "accessReview": {
+      "frequency": "quarterly",
+      "reviewers": ["teamLeads", "management"],
+      "scope": ["all access levels"],
+      "documentation": "required"
+    }
   }
 }
